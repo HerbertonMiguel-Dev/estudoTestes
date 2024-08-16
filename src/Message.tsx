@@ -4,13 +4,19 @@ import { View, Text, Button } from 'react-native'
 export function Message(){
   const [showMessage, setShowMessage] = useState(false)
 
+  function handleShowMessage(){
+    setTimeout(() => {
+      setShowMessage(!showMessage)
+    }, 1000)
+  }
+
   return(
     <View>
       <Text testID="message">
-        {showMessage ? "Bem vindo Herberton" : "Aguardando..."}
+        {showMessage ? "Bem vindo Matheus" : "Aguardando..."}
       </Text>
 
-      <Button title="Acessar" onPress={() => setShowMessage(!showMessage) } />
+      <Button title="Acessar" onPress={handleShowMessage} />
     </View>
   )
 }
