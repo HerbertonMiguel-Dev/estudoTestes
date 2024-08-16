@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react-native'
-import App from '../App'
+import App from '../../App'
 
 it("teste exemplo", () =>{
   expect(1).toBe(1)
