@@ -3,7 +3,7 @@ import { Form } from '../../src/Form'
 
 describe("Component Form", () => {
 
-  it("deve chamar handleLogin com o nome de usuário e senha quando o botão for pressionado", () => {
+  it("should call handleLogin with the username and password when button pressed", () => {
     const { getByText, getByPlaceholderText } = render(<Form/>)
 
    const emailInput = getByPlaceholderText("Digite seu email")
@@ -19,7 +19,7 @@ describe("Component Form", () => {
 
   })
 
-  it("deve verificar o usuário do texto renderizado", () => {
+  it("should check render text user", () => {
     const { getByText, getByPlaceholderText, queryByText } = render(<Form/>)
 
     const emailInput = getByPlaceholderText("Digite seu email")
