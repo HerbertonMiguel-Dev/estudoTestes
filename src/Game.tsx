@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import api from './services/api'
 
 interface GameProp{
@@ -29,6 +29,18 @@ export function Game() {
 
   }, [])
 
+  async function handleFetchGame(){
+    try{
+      const response = await api.get("/next-api/?api=game&id=2")
+      setGame({
+        title: response.data.title,
+        image_url: response.data.image_url
+      })
+    }catch(err){
+      setErrorMsg("Erro ao buscar dados")
+    }
+  }
+
 
  return (
    <View style={styles.container}>
@@ -42,6 +54,8 @@ export function Game() {
           <Text>{game.title}</Text>
         </>
       )}
+
+      <Button title="Mudar game" onPress={handleFetchGame} />
 
       {errorMsg !== "" && <Text>{errorMsg}</Text>}
 
