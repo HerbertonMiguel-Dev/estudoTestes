@@ -1,8 +1,17 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import App from '../../App'
 
-it("teste exemplo", () =>{
-  expect(1).toBe(1)
+it("Test exemplo", () => {
+
+  const num1 = 10;
+  const num2 = 20;
+  const sum = num1 + num2;
+
+  expect(1).toBe(1);
+  expect(sum).toBe(30);
+  expect(sum).toBeGreaterThan(20)
+  expect(sum).toBeLessThan(50)
+
 })
 
 describe("App Componente testes", () => {
@@ -11,7 +20,6 @@ describe("App Componente testes", () => {
     const { getByText } = render(<App/>)
 
     expect(getByText("App Contador")).toBeTruthy();
-
   })
 
   it("should change counter on press button", () => {
@@ -24,18 +32,21 @@ describe("App Componente testes", () => {
     const counterText = getByTestId("counter")
 
     expect(counterText.props.children).toBe(2)
+
   })
 
+
   it("should decrease counter on clicking button", () => {
-      const { getByText, getByTestId } = render(<App/>)
+    const { getByText, getByTestId } = render(<App/>)
 
-      const button = getByText("-")
-      fireEvent.press(button);
+    const button = getByText("-")
+    fireEvent.press(button);
 
-      const counterText = getByTestId("counter")
+    const counterText = getByTestId("counter")
 
-      expect(counterText.props.children).toBe(-1)
+    expect(counterText.props.children).toBe(-1)
 
-    })
+  })
+
 
 })
