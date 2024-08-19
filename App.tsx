@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Title } from './src/Title'
-import { Message } from './src/Message'
+import { Game } from './src/Game'
 
 export default function App() {
   const [counter, setCounter] = useState(0)
 
   return (
     <View style={styles.container}>
-      
+
       <Title title="Restaurante teste" />
 
       <Text style={styles.title}>App Contador</Text>
@@ -25,7 +25,8 @@ export default function App() {
         </TouchableOpacity>
       </View>
 
-      <Message/>
+      <Game/>
+
 
     </View>
   );
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   title:{
     fontSize: 24,
     marginTop: 14,
-     fontWeight: 'bold'
+    fontWeight: 'bold'
   },
   counterArea:{
     flexDirection: 'row',
