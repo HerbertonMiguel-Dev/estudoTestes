@@ -16,13 +16,13 @@ it("Test exemplo", () => {
 
 describe("App Componente testes", () => {
 
-  it("should Test render App component", () => {
+  it("deve testar o componente do aplicativo de renderização", () => {
     const { getByText } = render(<App/>)
 
     expect(getByText("App Contador")).toBeTruthy();
   })
 
-  it("should change counter on press button", () => {
+  it("deve mudar o contador ao pressionar o botão", () => {
     const { getByText, getByTestId } = render(<App/>)
 
     const button = getByText("+")
@@ -36,7 +36,7 @@ describe("App Componente testes", () => {
   })
 
 
-  it("should decrease counter on clicking button", () => {
+  it("deve diminuir o contador ao clicar no botão", () => {
     const { getByText, getByTestId } = render(<App/>)
 
     const button = getByText("-")
@@ -45,6 +45,21 @@ describe("App Componente testes", () => {
     const counterText = getByTestId("counter")
 
     expect(counterText.props.children).toBe(-1)
+
+  })
+
+  it("deve renderizar o componente de boas-vindas", () => {
+    const { getByPlaceholderText, getByText } = render(<App/>)
+
+    const input = getByPlaceholderText("Digite seu nome...")
+    const loginButton = getByText(/login/i)
+
+    fireEvent.changeText(input, "Lucas")
+    fireEvent.press(loginButton);
+
+    expect(input).toBeTruthy();
+    expect(loginButton).toBeTruthy();
+
 
   })
 
