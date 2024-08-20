@@ -21,4 +21,18 @@ describe("Testes de componentes Welcome", () => {
 
   })
 
+  it("não deve exibir mensagem de boas-vindas quando a entrada estiver vazia e o botão de login for pressionado", () => {
+    const handleGetUserMock = jest.fn();
+
+    const { getByText, queryByText } = render(<Welcome handleGetUser={handleGetUserMock}/>)
+
+    const loginButton = getByText(/login/i)
+    fireEvent.press(loginButton);
+
+    const message = queryByText(/Bem vindo/)
+    expect(message).toBeNull();
+    expect(handleGetUserMock).not.toHaveBeenCalled();
+
+  })
+
 })
